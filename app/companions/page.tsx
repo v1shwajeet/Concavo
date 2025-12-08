@@ -1,7 +1,11 @@
+import CompanionCard from "@/components/CompanionCard"
+
 const CompanionsLibrary = () => {
   return (
     <div>
-      companions
+      <CompanionCard/>
+      <CompanionCard/>
+      <CompanionCard/>
     </div>
   )
 }

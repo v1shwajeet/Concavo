@@ -6,28 +6,29 @@ import { usePathname } from "next/navigation"
 
 
 const navItems = [
-    { label:"Home" , href:"/"},
-    { label:"Companions" , href:"/companions"},
-    { label:"My Journey" , href:"/my-journey"},
+  { label: "Home", href: "/" },
+  { label: "Companions", href: "/companions" },
+  { label: "My Journey", href: "/my-journey" },
 ]
 
-
 const NavItems = () => {
-const pathname = usePathname();
+  const pathname = usePathname()
 
   return (
-      <nav className='flex gap-4 items-center'>
-        {navItems.map(({label, href}) => (
-            <Link
-                href={href}
-                key={label}  
-                className={cn(pathname===href && 'text-primary font-semibold')}
-            >
-                {label}
-            </Link>
-        )
-    )}
-      </nav>
+    <nav className="flex gap-4 items-center">
+      {navItems.map(({ label, href }) => (
+        <Link
+          href={href}
+          key={label}
+          className={cn(
+            "text-sm sm:text-base",                              
+            pathname === href && "text-primary font-semibold"   
+          )}
+        >
+          {label}
+        </Link>
+      ))}
+    </nav>
   )
 }
 

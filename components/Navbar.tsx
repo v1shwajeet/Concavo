@@ -4,20 +4,21 @@ import NavItems from "./NavItems"
 
 const Navbar = () => {
   return (
-    <nav className="navbar">
-      <Link href='/'>
+    <nav className="navbar flex items-center justify-between">
+      <Link href="/">
         <div className="flex items-center gap-2.5 cursor-pointer">
-            <Image
-                src="/images/logo.svg"
-                alt="logo"
-                height={44}
-                width={46}
-            />
+          <Image
+            src="/images/logo.svg"
+            alt="logo"
+            height={44}
+            width={46}
+          />
         </div>
       </Link>
-      <div className="flex gap-8 items-center">
-        <NavItems/>
-        <p>Sign In</p>
+
+      <div className="flex gap-3 sm:gap-8 items-center">
+        <NavItems />
+        <p className="text-sm sm:text-base">Sign In</p>
       </div>
     </nav>
   )
