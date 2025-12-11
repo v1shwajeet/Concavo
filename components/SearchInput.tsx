@@ -11,29 +11,44 @@ const SearchInput = () => {
     const searchParams = useSearchParams();
     const query = searchParams.get('topic') || '';
 
-    const [searchQuery, setSearchQuery] = useState('');
+    // INIT from URL so input and URL stay in sync
+    const [searchQuery, setSearchQuery] = useState(query);
+
+    // NEW: keep local input synced when URL changes elsewhere
+    useEffect(() => {
+      if (query !== searchQuery) setSearchQuery(query);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [query]);
 
     useEffect(() => {
         const delayDebounceFn = setTimeout(() => {
-            if(searchQuery) {
-                const newUrl = formUrlQuery({
+            let newUrl = '';
+
+            if (searchQuery) {
+                newUrl = formUrlQuery({
                     params: searchParams.toString(),
                     key: "topic",
                     value: searchQuery,
                 });
-
-                router.push(newUrl, { scroll: false });
             } else {
-                if(pathname === '/companions') {
-                    const newUrl = removeKeysFromUrlQuery({
+                if (pathname === '/companions') {
+                    newUrl = removeKeysFromUrlQuery({
                         params: searchParams.toString(),
                         keysToRemove: ["topic"],
                     });
-
-                    router.push(newUrl, { scroll: false });
+                } else {
+                    return; // nothing to do
                 }
             }
-        }, 500)
+
+            // NEW: only navigate if URL actually changes (prevents loop)
+            const currentFull = `${window.location.pathname}${window.location.search}`;
+            if (newUrl !== currentFull) {
+                router.push(newUrl, { scroll: false });
+            }
+        }, 500);
+
+        return () => clearTimeout(delayDebounceFn); // cleanup debounce
     }, [searchQuery, router, searchParams, pathname]);
 
     return (
