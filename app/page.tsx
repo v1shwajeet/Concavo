@@ -4,6 +4,7 @@ import CTA from "@/components/CTA"
 import { recentSessions } from "@/constants"
 import { getAllCompanions, getRecentSessions } from "@/lib/actions/companion.actions"
 import { getSubjectColor } from "@/lib/utils"
+// app/page.tsx (or the file that uses headers())
 
 const Page = async () => {
 
