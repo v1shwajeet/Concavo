@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { Button } from "@/components/ui/button"
-import { createCompanion } from "@/lib/actions/companion.action"
+import { createCompanion } from "@/lib/actions/companion.actions"
 import { redirect } from "next/navigation"
 import {
   Form,
