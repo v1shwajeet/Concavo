@@ -10,7 +10,7 @@ import {
 
 const Navbar = () => {
   return (
-    <nav className="navbar flex items-center justify-between">
+    <nav className="navbar">
       <Link href="/">
         <div className="flex items-center gap-2.5 cursor-pointer">
           <Image
