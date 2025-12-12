@@ -10,14 +10,14 @@ import {
 
 const Navbar = () => {
   return (
-    <nav className="navbar">
+    <nav className="flex items-center justify-between mx-auto w-full px-14 pt-4 bg-white max-sm:px-4">
       <Link href="/">
         <div className="flex items-center gap-2.5 cursor-pointer">
           <Image
-            src="/images/logo.svg"
+            src="/images/logo.png"
             alt="logo"
-            height={44}
-            width={46}
+            height={54}
+            width={56}
           />
         </div>
       </Link>
